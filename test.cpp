@@ -28,9 +28,10 @@ void displayVector(std::vector<double> input_vector){
     std::cout<<")"<<std::endl;
 }
 
-void scalarMultiplication(double k, std::vector<double> &input_vector){
+std::vector<double> scalarMultiplication(double k, std::vector<double> input_vector){
     for(int i=0;i<VECTOR_DIMENSION;i++)
         input_vector[i] *= k;
+    return input_vector;
 }
 
 double innerProduct(std::vector<double> vector_1,std::vector<double> vector_2){
@@ -57,15 +58,14 @@ std::vector<double> addVector(std::vector<std::vector<double>> vector_vector){
 }
 
 std::vector<double> unitVectorOf(std::vector<double> input_vector){
-    scalarMultiplication((1/magnitudeOfVector(input_vector)),input_vector);
-    return input_vector;
+    return(scalarMultiplication((1/magnitudeOfVector(input_vector)),input_vector));
 }
 
 int main(){
     std::vector<double> vector_1 = {3,4,0},vector_2 = {0,0,1};
     //std::cout<<&vector_1<<std::endl;
     displayVector(addVector({vector_1,vector_2}));
-    scalarMultiplication(9,vector_1);
+    displayVector(scalarMultiplication(9,vector_1));
     displayVector(vector_1);
     std::cout << "The value of dot product is: " << innerProduct(vector_1,vector_2) << std::endl;
     displayVector(crossProduct(vector_1,vector_2));
