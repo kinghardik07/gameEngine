@@ -58,7 +58,11 @@ matrix addMatrices(matrix input_matrix_1, matrix input_matrix_2){
         return {{0}};
     }
 }
-
+bool matrixMultiplicable(matrix input_matrix_1,matrix input_matrix_2){
+    if(matrixDimension(input_matrix_1)[1]==matrixDimension(input_matrix_2)[0])
+        return true;
+    return false;
+}
 //work in progress - matrix Multiplication
 matrix matrixProduct(matrix input_matrix_1, matrix input_matrix_2){
     //if(!dimensionError(input_matrix_1,input_matrix_2)){
@@ -104,4 +108,5 @@ int main(){
     //displayMatrix(addMatrices(mat_1,mat_2));
     //displayMatrix(scalarMultiplication(-1,mat_1));
     //displayMatrix(addMatrices(mat_1,identityMatrix(3)));
+    //std::cout << matrixMultiplicable(mat_1,identityMatrix(2));
 }
