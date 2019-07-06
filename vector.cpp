@@ -4,7 +4,7 @@
 
 const int VECTOR_DIMENSION = 3;
 
-void initailizeVector(std::vector<double> &input_vector){
+void initializeVector(std::vector<double> &input_vector){
     for(int i=0;i<VECTOR_DIMENSION;i++)
         input_vector[i]=0;
 }
