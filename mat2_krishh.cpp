@@ -11,7 +11,7 @@
 
 typedef std::vector<std::vector<double>> matrix;
 const int MATRIX_DIMENSION = 3;
-const std::vector<int> ZERO_DIMENSION = {0,0};
+const std::vector<int> ZERO_DIMENSION={0,0};
 
 std::vector<int> matrixDimension(matrix input_matrix){
     int row=input_matrix.size();
@@ -23,6 +23,10 @@ std::vector<int> matrixDimension(matrix input_matrix){
     return {row,column};
 }
 //try adding two seperate variables for row annd column and initialize them in matrixDimension function
+
+//matrixCheck
+
+
 bool dimensionError(matrix input_matrix_1, matrix input_matrix_2){
     if(matrixDimension(input_matrix_1) == matrixDimension(input_matrix_2))
         return false;
@@ -30,18 +34,6 @@ bool dimensionError(matrix input_matrix_1, matrix input_matrix_2){
         std::cout << "Dimension error! Dimensions don't match!" << std::endl;
         return true;
     }
-}
-matrix transposeOf(matrix input_matrix){
-    if(matrixDimension(input_matrix) != ZERO_DIMENSION){
-        matrix transpose(matrixDimension(input_matrix)[1]);
-        for(int i=0; i<matrixDimension(input_matrix)[1]; i++){
-            for(int j=0; j<input_matrix.size(); j++){
-                transpose[i].push_back(input_matrix[j][i]);
-            }
-        }
-        return transpose;
-    }
-    return {{0}};
 }
 matrix scalarMultiplication(double k, matrix input_matrix){
     for(int i=0; i<input_matrix.size(); i++){
@@ -77,22 +69,27 @@ bool matrixMultiplicable(matrix input_matrix_1,matrix input_matrix_2){
     return false;
 }
 //work in progress - matrix Multiplication
+
+/*matrix initialiseMatrix(int r,int c){
+
+}*/
+
 matrix matrixProduct(matrix input_matrix_1, matrix input_matrix_2){
-    //if(!dimensionError(input_matrix_1,input_matrix_2)){
-    if(matrixDimension(input_matrix_1)!=ZERO_DIMENSION && matrixDimension(input_matrix_2)!=ZERO_DIMENSION && matrixMultiplicable(input_matrix_1,input_matrix_2)){
-        matrix output_matrix(input_matrix_1.size());
-        for(int i=0; i<input_matrix_1.size(); i++){
-            for(int j=0; j<input_matrix_2[0].size(); j++){
-                output_matrix[i].push_back(0);
-                for(int k=0; k<input_matrix_2.size(); k++){
-                    output_matrix[i][j]+=input_matrix_1[i][k]*input_matrix_2[k][j];//
-                }
-            }
-        }
-        return output_matrix;
-    }
-    return {{0}};
+	if(matrixDimension(input_matrix_1)!=ZERO_DIMENSION && matrixDimension(input_matrix_2)!=ZERO_DIMENSION && matrixMultiplicable(input_matrix_1,input_matrix_2)){
+		matrix output_matrix(input_matrix_1.size());
+		for(int i=0; i<input_matrix_1.size(); i++){
+			for(int j=0; j<input_matrix_2[0].size(); j++){
+				output_matrix[i].push_back(0);
+				for(int k=0; k<input_matrix_2.size(); k++){
+					output_matrix[i][j]+=input_matrix_1[i][k]*input_matrix_2[k][j];//
+				}
+			}
+		}
+		return output_matrix;
+	}
+	return {{0}};
 }
+
 matrix identityMatrix(int order){
     matrix identity(order);
     for(int i=0; i<order; i++){
@@ -108,9 +105,9 @@ matrix identityMatrix(int order){
     return identity;
 }
 void displayMatrix(matrix input_matrix){
-    std::cout << "The matrix is: \n";
+    std::cout << "The matrix is(assuming it IS a matrix): \n";
     for(int i=0; i<input_matrix.size(); i++){
-        for(int j=0; j<MATRIX_DIMENSION; j++){
+        for(int j=0; j<input_matrix[0].size(); j++){
             std::cout << input_matrix[i][j] << "\t";
         }
         std::cout << std::endl;
@@ -119,12 +116,11 @@ void displayMatrix(matrix input_matrix){
 
 int main(){
     matrix mat_1 = {{1,2,3},{4,5,6},{7,8,9}};
-    matrix mat_2 = {{1,0,3},{3,4,5},{2,3,4}};
-    //matrix identityMatrix = {{1,0,0},{0,1,0},{0,0,1}};
+    matrix mat_2 = {{11,12,13},{14,15,16},{17,18,19}};
+    displayMatrix(matrixProduct(mat_1,identityMatrix));
     //displayMatrix(identityMatrix);
     //displayMatrix(addMatrices(mat_1,mat_2));
     //displayMatrix(scalarMultiplication(-1,mat_1));
     //displayMatrix(addMatrices(mat_1,identityMatrix(3)));
     //std::cout << matrixMultiplicable(mat_1,identityMatrix(2));
-    // displayMatrix(transposeOf(mat_1));
 }
