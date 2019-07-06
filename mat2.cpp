@@ -75,7 +75,6 @@ matrix matrixProduct(matrix input_matrix_1, matrix input_matrix_2){
         }
     return {{0}};
 }
-
 matrix identityMatrix(int order){
     matrix identity(order);
     for(int i=0; i<order; i++){
