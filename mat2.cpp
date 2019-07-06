@@ -110,11 +110,14 @@ matrix identityMatrix(int order){
 void displayMatrix(matrix input_matrix){
     std::cout << "The matrix is: \n";
     for(int i=0; i<input_matrix.size(); i++){
-        for(int j=0; j<MATRIX_DIMENSION; j++){
+        for(int j=0; j<input_matrix[0].size(); j++){
             std::cout << input_matrix[i][j] << "\t";
         }
         std::cout << std::endl;
     }
+}
+double determinant(matrix input_matrix){
+    
 }
 
 int main(){
@@ -126,5 +129,5 @@ int main(){
     //displayMatrix(scalarMultiplication(-1,mat_1));
     //displayMatrix(addMatrices(mat_1,identityMatrix(3)));
     //std::cout << matrixMultiplicable(mat_1,identityMatrix(2));
-    // displayMatrix(transposeOf(mat_1));
+    //displayMatrix(transposeOf(mat_2));
 }
