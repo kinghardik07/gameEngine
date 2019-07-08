@@ -19,16 +19,16 @@ const matrix NULL_MATRIX={{0}};	//not same as zero matrix; used as a return valu
 //LOOK INTO ERROR MESSAGES AND stderr
 
 void raiseError(int error_code,bool exit_program){	//or create another raiseErrorAndExit
-	std::cout<<"Error: ";
+	std::cerr<<"Error: ";
 	switch(error_code){
-		case 0:std::cout<<"Not a matrix";break;
-		case 1:std::cout<<"Matrix dimensions don't match";break;
-		case 2:std::cout<<"Matrices are not multiplicable";break;
-		case 3:std::cout<<"Not a square matrix";break;
-		case 4:std::cout<<"Matrix is singular";break;
-		default:std::cout<<"Unknown error code";break;
+		case 0:std::cerr<<"Not a matrix";break;
+		case 1:std::cerr<<"Matrix dimensions don't match";break;
+		case 2:std::cerr<<"Matrices are not multiplicable";break;
+		case 3:std::cerr<<"Not a square matrix";break;
+		case 4:std::cerr<<"Matrix is singular";break;
+		default:std::cerr<<"Unknown error code";break;
 	}
-	std::cout<<std::endl;
+	std::cerr<<std::endl;
 	if(exit_program) exit(0);	//or _Exit()?
 }
 
